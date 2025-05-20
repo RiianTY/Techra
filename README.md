@@ -8,5 +8,6 @@ This is a current project, that is still under development
 - [HeroUI](https://heroui.com)
 - [Tailwind CSS](https://tailwindcss.com)
 - [Tailwind Variants](https://tailwind-variants.org)
+- [React](https://www.React.com)
 - [TypeScript](https://www.typescriptlang.org)
 - [Framer Motion](https://www.framer.com/motion)
