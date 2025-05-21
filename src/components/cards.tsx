@@ -1,12 +1,39 @@
 import "@/styles/globals.css";
 import { motion } from "framer-motion";
 import { title } from "@/components/primitives";
+import React from "react";
 
-export const Card = () => {
+const variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      staggerChildren: 0.2,
+      when: "beforeChildren",
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, transition: { duration: 1 } },
+};
+
+export const Card = React.memo(() => {
   return (
-    <section className="w-full py-12 md:py-24 bg-white dark:bg-black test">
+    <motion.section
+      className="w-full py-12 md:py-24 bg-white dark:bg-black test"
+      variants={variants}
+      initial="hidden"
+      animate="visible"
+    >
       <div className="container px-4 md:px-6">
-        <div className="flex flex-col items-center justify-center space-y-4 text-center">
+        <motion.div
+          key={0}
+          variants={childVariants}
+          className="flex flex-col items-center justify-center space-y-4 text-center"
+        >
           <div className="space-y-2">
             <div className="flex w-fit m-auto mb-[15px] rounded-lg bg-gray-100 dark:bg-neutral-900 px-3 py-1 text-sm dark:text-gray-200">
               Our Services
@@ -17,13 +44,13 @@ export const Card = () => {
               business needs.
             </p>
           </div>
-        </div>
+        </motion.div>
         <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
           {/* Web Development Card */}
           <motion.div
-            animate={{ scale: 1 }}
-            initial={{ scale: 0 }}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            key={1}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             <div className="relative z-10">
@@ -57,9 +84,9 @@ export const Card = () => {
 
           {/* UI/UX Design Card */}
           <motion.div
-            animate={{ scale: 1 }}
-            initial={{ scale: 0 }}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            key={2}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             <div className="relative z-10">
@@ -93,9 +120,9 @@ export const Card = () => {
 
           {/* App Development Card */}
           <motion.div
-            animate={{ scale: 1 }}
-            initial={{ scale: 0 }}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            key={3}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900 dark:to-green-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             <div className="relative z-10">
@@ -128,9 +155,9 @@ export const Card = () => {
 
           {/* SEO Optimization Card */}
           <motion.div
-            animate={{ scale: 1 }}
-            initial={{ scale: 0 }}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            key={4}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900 dark:to-amber-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             <div className="relative z-10">
@@ -163,9 +190,9 @@ export const Card = () => {
 
           {/* E-commerce Solutions Card */}
           <motion.div
-            animate={{ scale: 1 }}
-            initial={{ scale: 0 }}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            key={5}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
           >
             <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900 dark:to-red-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             <div className="relative z-10">
@@ -200,9 +227,9 @@ export const Card = () => {
 
           {/* Maintenance & Support Card */}
           <motion.div
-            animate={{ scale: 1 }}
-            initial={{ scale: 0 }}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+            key={6}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 "
           >
             <div className="absolute inset-0 bg-gradient-to-r from-cyan-50 to-cyan-100 dark:from-cyan-900 dark:to-cyan-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
             <div className="relative z-10">
@@ -233,9 +260,9 @@ export const Card = () => {
           </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
-};
+});
 
 export default function Contact() {
   return (

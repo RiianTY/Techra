@@ -3,10 +3,32 @@ import DefaultLayout from "@/layouts/default";
 import Cards from "@/components/cards";
 import { Link } from "@heroui/link";
 import { siteConfig } from "@/config/site";
+import { motion } from "framer-motion";
+
+const variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      duration: 0.2,
+      staggerChildren: 0.2,
+      when: "beforeChildren",
+    },
+  },
+};
+
+const childVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, transition: { duration: 1 } },
+};
 
 const Button = () => {
   return (
-    <div className="flex items-center justify-center mt-[50px]">
+    <motion.div
+      key={2}
+      variants={childVariants}
+      className="flex items-center justify-center mt-[10px]"
+    >
       <div className="relative group">
         <Link href={siteConfig.navItems[1].href}>
           <button className=" p-px font-semibold leading-6 text-white bg-gray-800 cursor-pointer rounded-xl  transition-transform duration-300 ease-in-out hover:scale-105 active:scale-95">
@@ -36,15 +58,24 @@ const Button = () => {
           </button>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
 export default function IndexPage() {
   return (
     <DefaultLayout>
-      <section className="flex flex-col items-center justify-center gap-4 py-8 md:py-10">
-        <div className="inline-block max-w-lg text-center justify-center">
+      <motion.section
+        variants={variants}
+        initial="hidden"
+        animate="visible"
+        className="flex flex-col items-center justify-center gap-4 py-8 md:py-10"
+      >
+        <motion.div
+          key={1}
+          variants={childVariants}
+          className="inline-block max-w-lg text-center justify-center"
+        >
           <span className={title()}>Welcome to&nbsp;</span>
           <span className={title({ color: "violet" })}>Valkryn&nbsp;</span>
           <br />
@@ -54,9 +85,9 @@ export default function IndexPage() {
           <div className={subtitle({ class: "mt-4" })}>
             Beautiful, fast and modern Web development.
           </div>
-          <Button />
-        </div>
-      </section>
+        </motion.div>
+        <Button />
+      </motion.section>
       <Cards />
     </DefaultLayout>
   );
