@@ -1,4 +1,5 @@
 import { title, subtitle } from "@/components/primitives";
+import WebsitePreview from "@/components/website-preview";
 import DefaultLayout from "@/layouts/default";
 import Cards from "@/components/cards";
 import { Link } from "@heroui/link";
@@ -27,7 +28,8 @@ const Button = () => {
     <motion.div
       key={2}
       variants={childVariants}
-      className="flex items-center justify-center mt-[10px]"
+      className="flex items-center justify-center mt-[10px]
+      pb-10 md:pb-0"
     >
       <div className="relative group">
         <Link href={siteConfig.navItems[1].href}>
@@ -48,9 +50,9 @@ const Button = () => {
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path
-                    clip-rule="evenodd"
+                    clipRule="evenodd"
                     d="M8.22 5.22a.75.75 0 0 1 1.06 0l4.25 4.25a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06-1.06L11.94 10 8.22 6.28a.75.75 0 0 1 0-1.06Z"
-                    fill-rule="evenodd"
+                    fillRule="evenodd"
                   ></path>
                 </svg>
               </div>
@@ -69,12 +71,12 @@ export default function IndexPage() {
         variants={variants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col items-center justify-center gap-4 py-8 md:py-10"
+        className="flex flex-col lg:flex-row flex-wrap items-center justify-center gap-20 py-8 md:py-10"
       >
         <motion.div
           key={1}
           variants={childVariants}
-          className="inline-block max-w-lg text-center justify-center"
+          className="inline-block pl-5 max-w-lg text-center justify-center max-w-md"
         >
           <span className={title()}>Welcome to&nbsp;</span>
           <span className={title({ color: "violet" })}>Valkryn&nbsp;</span>
@@ -84,9 +86,15 @@ export default function IndexPage() {
           </span>
           <div className={subtitle({ class: "mt-4" })}>
             Beautiful, fast and modern Web development.
+            <Button />
           </div>
         </motion.div>
-        <Button />
+        <WebsitePreview
+          className="shadow-lg w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px]"
+          size="responsive"
+          autoSwitchThemes={true}
+          switchInterval={3000}
+        />
       </motion.section>
       <Cards />
     </DefaultLayout>

@@ -23,12 +23,12 @@ const childVariants = {
 export const Card = React.memo(() => {
   return (
     <motion.section
-      className="w-full py-12 md:py-24 bg-white dark:bg-black test"
+      className="w-full flex items-center justify-center py-12 md:py-24 bg-white dark:bg-black test"
       variants={variants}
       initial="hidden"
       animate="visible"
     >
-      <div className="container px-4 md:px-6">
+      <div className="container px-0.5 md:px-6">
         <motion.div
           key={0}
           variants={childVariants}

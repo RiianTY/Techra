@@ -121,31 +121,8 @@ form > .required:after {
 /* contact styles end */
 
 /* home page styles start */
-
-#code > code {
-  font-family: "Courier New", Courier, monospace;
-  font-size: 12px;
-  text-wrap: normal;
-  color: #f8fafc;
-  padding: 10px;
-  border-radius: 5px;
-}
-
-.codeblock {
-  width: 300px;
-  height: 100px;
-  overflow: auto;
-  flex-wrap: wrap;
-  background-color: #1e293b;
-  padding: 10px;
-  border-radius: 5px;
-  margin: 10px 0;
-}
-
-.test {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
 /* home page styles end */
+
+.web-prev {
+  min-width: 35%;
+}
