@@ -390,12 +390,15 @@ export default function WebsitePreview({
 
             {/* Why Choose Us section */}
             <div className="p-2">
-              <div className="mb-1 text-center text-[8px] font-semibold text-gray-800 dark:text-white">
+              <div className="mb-2 text-center text-[8px] font-semibold text-gray-800 dark:text-white">
                 Why Choose Us
               </div>
-              <div className="grid grid-cols-2 gap-x-2 gap-y-1">
+              <div className="grid grid-cols-2 gap-y-1 justify-items-center">
                 {benefits.map((benefit, i) => (
-                  <div key={i} className="flex items-center">
+                  <div
+                    key={i}
+                    className="flex items-center text-center justify-center"
+                  >
                     <div className={`mr-0.5 text-[6px] ${currentTheme.text}`}>
                       ✓
                     </div>
@@ -420,7 +423,7 @@ export default function WebsitePreview({
               <div className="mb-1 text-center text-[8px] font-semibold text-gray-800 dark:text-white">
                 What People Say
               </div>
-              <div className="flex space-x-1 overflow-x-auto pb-1">
+              <div className="flex space-x-1 overflow-x-auto pb-1 justify-center">
                 {testimonials.map((testimonial, i) => (
                   <div
                     key={i}
@@ -481,7 +484,7 @@ export default function WebsitePreview({
                 ))}
               </div>
               <div className="text-[0.3em] sm:text-[0.4em] text-gray-500 dark:text-gray-400">
-                © 2024 WebCraft
+                © 2024 Tetra. All rights reserved.
               </div>
             </div>
           </div>
