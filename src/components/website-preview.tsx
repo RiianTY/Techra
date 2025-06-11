@@ -154,7 +154,7 @@ export default function WebsitePreview({
   containerClassName = "",
   showTypingEffect = true,
   autoSwitchThemes = true,
-  switchInterval = 3000,
+  switchInterval = 6000,
   size = "responsive",
 }: WebsitePreviewProps) {
   const [mounted, setMounted] = useState(false);
@@ -233,10 +233,10 @@ export default function WebsitePreview({
       variants={variants}
       initial="hidden"
       animate="visible"
-      className={`relative web-prev hidden md:block pt-10 ${containerClassName}`}
+      className={`relative web-prev hidden md:block pt-5 ${containerClassName}`}
     >
       <div
-        className={`inline-flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md transition-all duration-300 dark:border-gray-800 dark:bg-neutral-900 ${
+        className={`inline-flex flex-col overflow-hidden rounded-lg border border-gray-200 bg-white shadow-md transition-all duration-300 dark:border-gray-800 dark:bg-neutral-900 web-prev-inner ${
           isTransitioning ? "opacity-80 scale-[0.98]" : "opacity-100 scale-100"
         } ${getSizeClasses(size)} ${className}`}
       >

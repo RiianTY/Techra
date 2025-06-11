@@ -13,7 +13,7 @@ export default function DefaultLayout({
       </main>
       <footer className="w-full flex items-center justify-center py-3">
         <span className="text-default-600">
-          © {new Date().getFullYear()} Tetra. All rights reserved.
+          © {new Date().getFullYear()} Techra. All rights reserved.
         </span>
       </footer>
     </div>
