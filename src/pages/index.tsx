@@ -26,7 +26,7 @@ const childVariants = {
 const Button = () => {
   return (
     <motion.div
-      key={2}
+      key={3}
       variants={childVariants}
       className="flex justify-center w-full mt-[10px] pb-10 md:pb-0"
     >
@@ -73,24 +73,27 @@ export default function IndexPage() {
           className="inline-block max-w-lg text-center justify-center max-w-md"
         >
           <span className={title()}>Welcome to&nbsp;</span>
-          <span className={title({ color: "violet" })}>Valkryn&nbsp;</span>
+          <span className={title({ color: "violet" })}>Techra&nbsp;</span>
           <br />
           <span className={title()}>
-            websites regardless of your design experience.
+            custom websites regardless of your experience.
           </span>
           <div className={subtitle({ class: "mt-4" })}>
-            Beautiful, fast and modern Web development.
+            Beautiful, fast and modern websites with feature tracking.
             <Button />
           </div>
         </motion.div>
-        <WebsitePreview
-          className="shadow-lg w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px]"
-          size="responsive"
-          autoSwitchThemes={true}
-          switchInterval={3000}
-        />
+        <motion.div key={2} variants={childVariants}>
+          <WebsitePreview
+            className="shadow-lg w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px]"
+            size="responsive"
+            autoSwitchThemes={true}
+          />
+        </motion.div>
       </motion.section>
-      <Cards />
+      <motion.div key={4} variants={childVariants}>
+        <Cards />
+      </motion.div>
     </DefaultLayout>
   );
 }

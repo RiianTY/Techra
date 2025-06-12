@@ -9,7 +9,7 @@ const variants = {
     opacity: 1,
     transition: {
       duration: 0.5,
-      staggerChildren: 0.2,
+      staggerChildren: 0.3,
       when: "beforeChildren",
     },
   },
@@ -19,6 +19,8 @@ const childVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: { opacity: 1, transition: { duration: 1 } },
 };
+
+{/* format the code and put the text inside a data.js file along with the className (maybe) */}
 
 export const Card = React.memo(() => {
   return (
