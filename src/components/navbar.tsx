@@ -1,4 +1,5 @@
 import { Link } from "@heroui/link";
+import { Button } from "@heroui/react";
 import {
   Navbar as HeroUINavbar,
   NavbarBrand,
@@ -58,20 +59,29 @@ export const Navbar = () => {
         className="hidden sm:flex basis-1/5 sm:basis-full"
         justify="end"
       >
-        <NavbarItem className="hidden sm:flex gap-2">
+        <NavbarItem className="hidden sm:flex gap-2 items-center">
           <SignedIn>
             <UserButton afterSignOutUrl="/" />
           </SignedIn>
           <SignedOut>
             <SignInButton mode="modal">
-              <button className="px-2 py-1 rounded-md bg-primary text-white hover:bg-primary/90">
+              <Button
+                className="flex relative justify-center items-center bg-transparent px-4 py-2
+                border-2 dark:hover:bg-gray-800 border-black dark:border-white
+                hover:bg-gray-300"
+                size="sm"
+              >
                 Sign In
-              </button>
+              </Button>
             </SignInButton>
             <SignUpButton mode="modal">
-              <button className="px-4 py-2 rounded-md bg-secondary text-white hover:bg-secondary/90 ml-2">
+              <Button
+                className="flex relative justify-center items-center bg-black px-4 py-2
+                dark:hover:bg-white-100 border-black dark:border-white text-white dark:text-black dark:bg-white "
+                size="sm"
+              >
                 Sign Up
-              </button>
+              </Button>
             </SignUpButton>
           </SignedOut>
           <ThemeSwitch />

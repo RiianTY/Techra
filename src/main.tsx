@@ -16,7 +16,15 @@ if (!PUBLISHABLE_KEY) {
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+    <ClerkProvider
+      publishableKey={PUBLISHABLE_KEY}
+      appearance={{
+        elements: {
+          modalBackdrop: "flex items-center justify-center ",
+          modal: "flex items-center justify-center",
+        },
+      }}
+    >
       <BrowserRouter>
         <Provider>
           <App />
