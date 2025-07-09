@@ -1,5 +1,5 @@
 import { Link } from "@heroui/link";
-import { Button } from "@heroui/react";
+// import { Button } from "@heroui/react";
 import {
   Navbar as HeroUINavbar,
   NavbarBrand,
@@ -10,13 +10,13 @@ import {
   NavbarMenuItem,
 } from "@heroui/navbar";
 import { link as linkStyles } from "@heroui/theme";
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-} from "@clerk/clerk-react";
+// import {
+//   SignInButton,
+//   SignUpButton,
+//   SignedIn,
+//   SignedOut,
+//   UserButton,
+// } from "@clerk/clerk-react";
 import clsx from "clsx";
 
 import { siteConfig } from "@/config/site";
@@ -60,7 +60,7 @@ export const Navbar = () => {
         justify="end"
       >
         <NavbarItem className="hidden sm:flex gap-2 items-center">
-          <SignedIn>
+          {/* <SignedIn>
             <UserButton afterSignOutUrl="/" />
           </SignedIn>
           <SignedOut>
@@ -83,15 +83,15 @@ export const Navbar = () => {
                 Sign Up
               </Button>
             </SignUpButton>
-          </SignedOut>
+          </SignedOut> */}
           <ThemeSwitch />
         </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
-        <SignedIn>
+        {/* <SignedIn>
           <UserButton afterSignOutUrl="/" />
-        </SignedIn>
+        </SignedIn> */}
         <ThemeSwitch />
         <NavbarMenuToggle />
       </NavbarContent>
@@ -115,22 +115,22 @@ export const Navbar = () => {
               </Link>
             </NavbarMenuItem>
           ))}
-          <SignedOut>
-            <NavbarMenuItem>
-              <SignInButton mode="modal">
+          {/* <SignedOut> */}
+          <NavbarMenuItem>
+            {/* <SignInButton mode="modal">
                 <button className="w-full text-left px-4 py-2 rounded-md bg-primary text-white hover:bg-primary/90">
                   Sign In
                 </button>
-              </SignInButton>
-            </NavbarMenuItem>
-            <NavbarMenuItem>
-              <SignUpButton mode="modal">
+              </SignInButton> */}
+          </NavbarMenuItem>
+          <NavbarMenuItem>
+            {/* <SignUpButton mode="modal">
                 <button className="w-full text-left px-4 py-2 rounded-md bg-secondary text-white hover:bg-secondary/90">
                   Sign Up
                 </button>
-              </SignUpButton>
-            </NavbarMenuItem>
-          </SignedOut>
+              </SignUpButton> */}
+          </NavbarMenuItem>
+          {/* </SignedOut> */}
         </div>
       </NavbarMenu>
     </HeroUINavbar>
