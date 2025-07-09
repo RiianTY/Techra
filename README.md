@@ -1,4 +1,4 @@
-# Company site called Valkryn
+# Company site called Techra
 
 This is a current project, that is still under development
 
