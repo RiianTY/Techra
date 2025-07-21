@@ -5,8 +5,8 @@ export default function AboutPage() {
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-10 md:py-10">
-        <div className="inline-block max-w-xl text-center justify-center">
-          <h1 className={title()}>About Techra</h1>
+        <h1 className={title()}>About Techra</h1>
+        <div className="inline-block max-w-xl text-left justify-center">
           <p className="mt-4 text-gray-500 dark:text-gray-400 md:text-xl/relaxed">
             Founded in 2025 out of a passion for building websites, Techra is
             dedicated to delivering high-quality web solutions quickly and

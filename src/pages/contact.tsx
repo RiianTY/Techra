@@ -18,11 +18,11 @@ export const ContactForm = () => {
         })
         .then(
           () => {
-            return ContactSuccess();
-            form.current?.reset();
+            return <ContactSuccess />; // ContactSuccess()
           },
           (error: { text: string }) => {
             console.error("FAILED...", error.text);
+            <ContactSuccess errorNum={error} />;
           }
         );
     } else {
@@ -72,12 +72,7 @@ export const ContactForm = () => {
       <label className="float" htmlFor="user_phone">
         Phone
       </label>
-      <input
-        name="user_phone"
-        type="tel"
-        pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-        placeholder="+44 7000000000"
-      />
+      <input name="user_phone" type="tel" placeholder="+44 7000000000" />
       <label className="float" htmlFor="user_budget">
         Budget
       </label>
