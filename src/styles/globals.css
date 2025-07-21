@@ -123,3 +123,7 @@ form > .required:after {
 /* home page styles start */
 
 /* home page styles end */
+
+.toaster {
+  background-color: #181818;
+}

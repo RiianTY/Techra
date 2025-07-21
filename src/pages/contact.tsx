@@ -2,8 +2,7 @@ import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import DefaultLayout from "@/layouts/default";
 import "@/styles/globals.css";
-
-import ContactSuccess from "@/components/contactSuccess";
+import { toast } from "sonner";
 
 export const ContactForm = () => {
   const form = useRef<HTMLFormElement>(null);
@@ -13,16 +12,28 @@ export const ContactForm = () => {
 
     if (form.current) {
       emailjs
-        .sendForm("service_aodawfk", "template_fbcrfmp", form.current, {
+        .sendForm("service_80rmige", "template_fbcrfmp", form.current, {
           publicKey: "z_l982_kfuBRNqYZ4",
         })
         .then(
           () => {
-            return <ContactSuccess />; // ContactSuccess()
+            return toast("Thanks for contacting us", {
+              description: "Well get back to you as soon as possible.",
+              action: {
+                label: "X",
+                onClick: () => console.log("Undo"),
+              },
+            });
           },
           (error: { text: string }) => {
             console.error("FAILED...", error.text);
-            <ContactSuccess errorNum={error} />;
+            return toast.error("Failed to send message", {
+              description: "Please try again later.",
+              action: {
+                label: "X",
+                onClick: () => console.log("Error"),
+              },
+            });
           }
         );
     } else {

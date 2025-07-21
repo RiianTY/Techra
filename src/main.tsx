@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import { Toaster } from "@/components/sonner";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
@@ -28,6 +29,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter>
       <Provider>
         <App />
+        <Toaster />
       </Provider>
     </BrowserRouter>
     {/* </ClerkProvider> */}
