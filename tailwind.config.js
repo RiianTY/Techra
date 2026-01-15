@@ -14,4 +14,8 @@ export default {
   },
   darkMode: "class",
   plugins: [heroui()],
+  // Optimize CSS output
+  corePlugins: {
+    preflight: true,
+  },
 };

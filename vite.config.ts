@@ -7,12 +7,18 @@ export default defineConfig({
   plugins: [react(), tsconfigPaths()],
   build: {
     cssCodeSplit: true,
+    cssMinify: true, // Use built-in CSS minification
+    minify: "esbuild",
     rollupOptions: {
       output: {
         manualChunks: {
           vendor: ["react", "react-dom", "react-router-dom"],
+          ui: ["@heroui/react", "@heroui/theme"],
         },
       },
     },
+  },
+  css: {
+    devSourcemap: false,
   },
 });

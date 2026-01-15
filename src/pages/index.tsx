@@ -5,7 +5,6 @@ import Cards from "@/components/cards";
 import { Link } from "@heroui/link";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
-// import PricingCards from "@/components/pricing";
 
 const variants = {
   hidden: { opacity: 0 },
@@ -96,13 +95,6 @@ export default function IndexPage() {
       <motion.div key={4} variants={childVariants}>
         <Cards />
       </motion.div>
-
-      {/* 
-      <motion.div key={5} variants={childVariants}>
-        <PricingCards />
-      </motion.div> 
-      */}
-      
     </DefaultLayout>
   );
 }

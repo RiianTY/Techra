@@ -16,10 +16,8 @@ const variants = {
 
 const childVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, transition: { duration: 1 } },
+  visible: { opacity: 1, transition: { duration: 1 }   },
 };
-
-{/* format the code and put the text inside a data.js file along with the className (maybe) */}
 
 export const Pricing = React.memo(() => {
   return (
