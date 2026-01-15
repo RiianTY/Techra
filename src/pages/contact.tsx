@@ -1,7 +1,7 @@
 import emailjs from "@emailjs/browser";
 import { useRef } from "react";
 import DefaultLayout from "@/layouts/default";
-import "@/styles/globals.css";
+
 import { toast } from "sonner";
 
 export const ContactForm = () => {
