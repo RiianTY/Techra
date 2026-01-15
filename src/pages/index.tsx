@@ -5,7 +5,7 @@ import Cards from "@/components/cards";
 import { Link } from "@heroui/link";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
-import PricingCards from "@/components/pricing";
+// import PricingCards from "@/components/pricing";
 
 const variants = {
   hidden: { opacity: 0 },
