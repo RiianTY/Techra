@@ -1,4 +1,5 @@
 /* eslint-disable prettier/prettier */
+import "@/styles/globals.css";
 import { Toaster } from "@/components/sonner";
 import React from "react";
 import ReactDOM from "react-dom/client";

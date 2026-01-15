@@ -1,4 +1,3 @@
-import "@/styles/globals.css";
 import { motion } from "framer-motion";
 import { title } from "@/components/primitives";
 import React from "react";
