@@ -5,6 +5,7 @@ import Cards from "@/components/cards";
 import { Link } from "@heroui/link";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
+import PricingCards from "@/components/pricing";
 
 const variants = {
   hidden: { opacity: 0 },
@@ -61,7 +62,7 @@ const Button = () => {
 export default function IndexPage() {
   return (
     <DefaultLayout>
-      <motion.section
+      <motion.header
         variants={variants}
         initial="hidden"
         animate="visible"
@@ -72,16 +73,17 @@ export default function IndexPage() {
           variants={childVariants}
           className="inline-block max-w-lg text-center justify-center max-w-md"
         >
-          <span className={title()}>Welcome to&nbsp;</span>
-          <span className={title({ color: "violet" })}>Techra&nbsp;</span>
-          <br />
-          <span className={title()}>
-            custom websites regardless of your experience.
-          </span>
-          <div className={subtitle({ class: "mt-4" })}>
-            Beautiful, fast and modern websites with feature tracking.
+          <h1 className={title()}>
+            Welcome to&nbsp;
+            <span className={title({ color: "violet" })}>Techra&nbsp;</span>
+            <br />
+            Web solutions for everyone
+          </h1>
+          
+          <h2 className={subtitle({ class: "mt-4" })}>
+            Modernising your business made easy
             <Button />
-          </div>
+          </h2>
         </motion.div>
         <motion.div key={2} variants={childVariants}>
           <WebsitePreview
@@ -90,10 +92,17 @@ export default function IndexPage() {
             autoSwitchThemes={true}
           />
         </motion.div>
-      </motion.section>
+      </motion.header>
       <motion.div key={4} variants={childVariants}>
         <Cards />
       </motion.div>
+
+      {/* 
+      <motion.div key={5} variants={childVariants}>
+        <PricingCards />
+      </motion.div> 
+      */}
+      
     </DefaultLayout>
   );
 }

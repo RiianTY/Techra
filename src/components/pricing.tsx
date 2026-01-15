@@ -22,7 +22,7 @@ const childVariants = {
 
 {/* format the code and put the text inside a data.js file along with the className (maybe) */}
 
-export const Card = React.memo(() => {
+export const Pricing = React.memo(() => {
   return (
     <motion.section
       className="w-full flex items-center justify-center py-12 md:py-24 bg-white dark:bg-black test"
@@ -75,12 +75,17 @@ export const Card = React.memo(() => {
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">
-                Web Development
+                One time payment
               </h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Custom websites built with cutting-edge technologies that
-                deliver exceptional user experiences.
-              </p>
+              <ol className="text-gray-500 dark:text-gray-400">
+                <li>Custom websites built with cutting-edge technologies that
+                deliver exceptional user experiences.</li>
+                <li>Custom websites built with cutting-edge technologies that
+                deliver exceptional user experiences.</li>
+                <li>Custom websites built with cutting-edge technologies that</li>
+                <li>Custom websites built with cutting-edge technologies that</li>
+                <li>Custom websites built with cutting-edge technologies that</li>
+              </ol>
             </div>
           </motion.div>
 
@@ -153,123 +158,17 @@ export const Card = React.memo(() => {
                 experiences across all devices.
               </p>
             </div>
-          </motion.div>
-
-          {/* SEO Optimization Card */}
-          <motion.div
-            key={4}
-            variants={childVariants}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-amber-50 to-amber-100 dark:from-amber-900 dark:to-amber-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            <div className="relative z-10">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-amber-100 text-amber-600 dark:bg-amber-900 dark:text-amber-300 transition-all duration-300 group-hover:bg-amber-600 group-hover:text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6"
-                >
-                  <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
-                  <polyline points="22 4 12 14.01 9 11.01" />
-                </svg>
-              </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
-                SEO Optimization
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Strategic optimization to improve visibility and drive organic
-                traffic to your website.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* E-commerce Solutions Card */}
-          <motion.div
-            key={5}
-            variants={childVariants}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-red-50 to-red-100 dark:from-red-900 dark:to-red-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            <div className="relative z-10">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-red-100 text-red-600 dark:bg-red-900 dark:text-red-300 transition-all duration-300 group-hover:bg-red-600 group-hover:text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6"
-                >
-                  <path d="m2 20 2-2h18l-2-8H2" />
-                  <path d="M3.9 4h16.2a1 1 0 0 1 .9 1.45L19 11" />
-                  <circle cx="10.5" cy="19.5" r=".5" />
-                  <circle cx="16.5" cy="19.5" r=".5" />
-                </svg>
-              </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
-                E-commerce Solutions
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Robust online stores with secure payment gateways and intuitive
-                shopping experiences.
-              </p>
-            </div>
-          </motion.div>
-
-          {/* Maintenance & Support Card */}
-          <motion.div
-            key={6}
-            variants={childVariants}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 "
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-50 to-cyan-100 dark:from-cyan-900 dark:to-cyan-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            <div className="relative z-10">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-cyan-100 text-cyan-600 dark:bg-cyan-900 dark:text-cyan-300 transition-all duration-300 group-hover:bg-cyan-600 group-hover:text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6"
-                >
-                  <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
-                </svg>
-              </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
-                Maintenance & Support
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Ongoing technical support and regular updates to keep your
-                digital assets running smoothly.
-              </p>
-            </div>
-          </motion.div>
+          </motion.div>         
         </div>
       </div>
     </motion.section>
   );
 });
 
-export default function Cards() {
+export default function PricingCards() {
   return (
     <>
-      <Card />
+      <Pricing />
     </>
   );
 }
