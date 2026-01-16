@@ -20,7 +20,7 @@ const variants = {
 
 const childVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, transition: { duration: 1 } },
+  visible: { opacity: 1, transition: { duration: .1 } },
 };
 
 const Button = () => {
@@ -67,9 +67,8 @@ export default function IndexPage() {
         animate="visible"
         className="flex flex-col lg:flex-row flex-wrap items-center justify-center gap-20 py-8 md:py-10"
       >
-        <motion.div
+        <div
           key={1}
-          variants={childVariants}
           className="inline-block max-w-lg text-center justify-center max-w-md"
         >
           <h1 className={title()}>
@@ -83,7 +82,7 @@ export default function IndexPage() {
             Modernising your business made easy
             <Button />
           </h2>
-        </motion.div>
+        </div>
         <motion.div key={2} variants={childVariants}>
           <WebsitePreview
             className="shadow-lg w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px]"

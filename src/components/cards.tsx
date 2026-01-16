@@ -7,8 +7,8 @@ const variants = {
   visible: {
     opacity: 1,
     transition: {
-      duration: 0.5,
-      staggerChildren: 0.3,
+      duration: 0.2,
+      staggerChildren: 0.2,
       when: "beforeChildren",
     },
   },
