@@ -1,20 +1,35 @@
 /* eslint-disable prettier/prettier */
 import "@/styles/globals.css";
-import { Toaster } from "@/components/sonner";
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 
 import App from "./App.tsx";
 import { Provider } from "./provider.tsx";
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
+// Lazy load Toaster since it's not needed for initial render
+const Toaster = lazy(() => 
+  import("@/components/sonner").then(module => ({ default: module.Toaster }))
+);
+
+// Only use StrictMode in development to reduce production bundle overhead
+const RootComponent = () => {
+  const app = (
     <BrowserRouter>
       <Provider>
         <App />
-        <Toaster />
+        <Suspense fallback={null}>
+          <Toaster />
+        </Suspense>
       </Provider>
     </BrowserRouter>
-  </React.StrictMode>
-);
+  );
+
+  if (import.meta.env.DEV) {
+    return <React.StrictMode>{app}</React.StrictMode>;
+  }
+
+  return app;
+};
+
+ReactDOM.createRoot(document.getElementById("root")!).render(<RootComponent />);

@@ -1,16 +1,27 @@
+import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 
-import IndexPage from "@/pages/index";
-import ContactForm from "@/pages/contact";
-import AboutPage from "@/pages/about";
+// Lazy load routes to reduce initial bundle size
+const IndexPage = lazy(() => import("@/pages/index"));
+const ContactForm = lazy(() => import("@/pages/contact"));
+const AboutPage = lazy(() => import("@/pages/about"));
+
+// Simple loading fallback
+const PageLoader = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-primary"></div>
+  </div>
+);
 
 function App() {
   return (
-    <Routes>
-      <Route element={<IndexPage />} path="/" />
-      <Route element={<ContactForm />} path="/contact" />
-      <Route element={<AboutPage />} path="/about" />
-    </Routes>
+    <Suspense fallback={<PageLoader />}>
+      <Routes>
+        <Route element={<IndexPage />} path="/" />
+        <Route element={<ContactForm />} path="/contact" />
+        <Route element={<AboutPage />} path="/about" />
+      </Routes>
+    </Suspense>
   );
 }
 

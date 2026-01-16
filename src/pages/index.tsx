@@ -1,10 +1,13 @@
+import { lazy, Suspense } from "react";
 import { title, subtitle } from "@/components/primitives";
-import WebsitePreview from "@/components/website-preview";
 import DefaultLayout from "@/layouts/default";
-import Cards from "@/components/cards";
 import { Link } from "@/components/link";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
+
+// Lazy load heavy components to reduce initial bundle size
+const WebsitePreview = lazy(() => import("@/components/website-preview"));
+const Cards = lazy(() => import("@/components/cards"));
 
 const variants = {
   hidden: { opacity: 0 },
@@ -84,15 +87,19 @@ export default function IndexPage() {
           </h2>
         </div>
         <motion.div key={2} variants={childVariants}>
-          <WebsitePreview
-            className="shadow-lg w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px]"
-            size="responsive"
-            autoSwitchThemes={true}
-          />
+          <Suspense fallback={<div className="w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px] h-[400px] bg-default-100 animate-pulse rounded-lg" />}>
+            <WebsitePreview
+              className="shadow-lg w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px]"
+              size="responsive"
+              autoSwitchThemes={true}
+            />
+          </Suspense>
         </motion.div>
       </motion.header>
       <motion.div key={4} variants={childVariants}>
-        <Cards />
+        <Suspense fallback={<div className="w-full py-12 bg-default-50 animate-pulse" />}>
+          <Cards />
+        </Suspense>
       </motion.div>
     </DefaultLayout>
   );
