@@ -67,14 +67,30 @@ export default defineConfig({
     cssCodeSplit: true,
     cssMinify: true,
     minify: "esbuild",
+    commonjsOptions: {
+      include: [/node_modules/],
+      transformMixedEsModules: true,
+    },
     rollupOptions: {
       output: {
         manualChunks: (id) => {
           // Split vendor chunks more granularly to reduce initial bundle size
           if (id.includes("node_modules")) {
-            // React core
-            if (id.includes("react") || id.includes("react-dom") || id.includes("react-router")) {
-              return "vendor-react";
+            // CRITICAL: Keep React and React-DOM in main bundle
+            // They must be available immediately for all components, including lazy-loaded ones
+            // Don't split React - it needs to be in the entry bundle
+            // Check for React in a way that catches all React imports
+            if (
+              id.includes("react") && 
+              !id.includes("react-router") &&
+              !id.includes("react-aria") &&
+              !id.includes("react-types")
+            ) {
+              return; // Keep React in main bundle - return undefined to prevent splitting
+            }
+            // React Router can be split (smaller, not needed immediately)
+            if (id.includes("react-router")) {
+              return "vendor-router";
             }
             // Framer Motion (large library, lazy load it)
             if (id.includes("framer-motion")) {
