@@ -2,6 +2,70 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 3.9%;
+    --primary: 262.1 83.3% 57.8%;
+    --primary-foreground: 210 20% 98%;
+    --danger: 0 72.2% 50.6%;
+    --danger-foreground: 0 0% 98%;
+    --default: 0 0% 98%;
+    --default-foreground: 0 0% 9%;
+    --default-50: 0 0% 98%;
+    --default-100: 0 0% 96.1%;
+    --default-200: 0 0% 89.8%;
+    --default-300: 0 0% 83.1%;
+    --default-400: 0 0% 63.9%;
+    --default-500: 0 0% 45.1%;
+    --default-600: 0 0% 32.2%;
+    --default-700: 0 0% 23.1%;
+    --default-800: 0 0% 14.9%;
+    --default-900: 0 0% 9%;
+    --divider: 0 0% 89.8%;
+  }
+
+  .dark {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 98%;
+    --primary: 263.4 70% 50.4%;
+    --primary-foreground: 210 20% 98%;
+    --danger: 0 62.8% 30.6%;
+    --danger-foreground: 0 0% 98%;
+    --default: 0 0% 9%;
+    --default-foreground: 0 0% 98%;
+    --default-50: 0 0% 9%;
+    --default-100: 0 0% 14.9%;
+    --default-200: 0 0% 23.1%;
+    --default-300: 0 0% 32.2%;
+    --default-400: 0 0% 45.1%;
+    --default-500: 0 0% 63.9%;
+    --default-600: 0 0% 83.1%;
+    --default-700: 0 0% 89.8%;
+    --default-800: 0 0% 96.1%;
+    --default-900: 0 0% 98%;
+    --divider: 0 0% 14.9%;
+  }
+
+  html {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+  }
+
+  body {
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+  }
+
+  #root {
+    background-color: hsl(var(--background));
+    min-height: 100vh;
+  }
+}
+
 /* contact for styles start */
 
 form {

@@ -2,7 +2,7 @@ import { title, subtitle } from "@/components/primitives";
 import WebsitePreview from "@/components/website-preview";
 import DefaultLayout from "@/layouts/default";
 import Cards from "@/components/cards";
-import { Link } from "@heroui/link";
+import { Link } from "@/components/link";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
 
@@ -30,7 +30,7 @@ const Button = () => {
       variants={childVariants}
       className="flex justify-center w-full mt-[10px] pb-10 md:pb-0"
     >
-      <Link href={siteConfig.navItems[1].href}>
+      <Link to={siteConfig.navItems[1].href}>
         <button className=" relative group p-px font-semibold leading-6 text-white bg-gray-800 cursor-pointer rounded-xl transition-transform duration-300 ease-in-out hover:scale-100 active:scale-95">
           <span className="absolute inset-0 rounded-xl bg-gradient-to-r from-teal-400 via-blue-500 to-purple-500 p-[2px] opacity-0 transition-opacity duration-500 group-hover:opacity-100"></span>
           <span className="relative z-10 flex items-center  px-6 py-3 rounded-xl bg-black">
