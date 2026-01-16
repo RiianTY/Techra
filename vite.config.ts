@@ -1,13 +1,56 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import tsconfigPaths from "vite-tsconfig-paths";
+import type { Plugin } from "vite";
+
+// Plugin to inline critical CSS and defer main CSS loading
+function cssOptimizationPlugin(): Plugin {
+  return {
+    name: "css-optimization",
+    transformIndexHtml: {
+      enforce: "post",
+      transform(html) {
+        // Inline critical CSS (minified) - CSS variables and base styles
+        const criticalCSS = `:root{--background:0 0% 100%;--foreground:0 0% 3.9%;--primary:262.1 83.3% 57.8%;--primary-foreground:210 20% 98%;--danger:0 72.2% 50.6%;--danger-foreground:0 0% 98%;--default:0 0% 98%;--default-foreground:0 0% 9%;--default-50:0 0% 98%;--default-100:0 0% 96.1%;--default-200:0 0% 89.8%;--default-300:0 0% 83.1%;--default-400:0 0% 63.9%;--default-500:0 0% 45.1%;--default-600:0 0% 32.2%;--default-700:0 0% 23.1%;--default-800:0 0% 14.9%;--default-900:0 0% 9%;--divider:0 0% 89.8%}.dark{--background:0 0% 0%;--foreground:0 0% 98%;--primary:263.4 70% 50.4%;--primary-foreground:210 20% 98%;--danger:0 62.8% 30.6%;--danger-foreground:0 0% 98%;--default:0 0% 9%;--default-foreground:0 0% 98%;--default-50:0 0% 9%;--default-100:0 0% 14.9%;--default-200:0 0% 23.1%;--default-300:0 0% 32.2%;--default-400:0 0% 45.1%;--default-500:0 0% 63.9%;--default-600:0 0% 83.1%;--default-700:0 0% 89.8%;--default-800:0 0% 96.1%;--default-900:0 0% 98%;--divider:0 0% 14.9%}html{background-color:hsl(var(--background));color:hsl(var(--foreground))}body{background-color:hsl(var(--background));color:hsl(var(--foreground));margin:0;padding:0;min-height:100vh}#root{background-color:hsl(var(--background));min-height:100vh}`;
+
+        // Insert critical CSS in head
+        html = html.replace("</head>", `    <style id="critical-css">${criticalCSS}</style>\n  </head>`);
+
+        // Convert stylesheet links to preload + async load
+        html = html.replace(
+          /<link([^>]*rel=["']stylesheet["'][^>]*)>/gi,
+          (match, attrs) => {
+            const hrefMatch = attrs.match(/href=["']([^"']+)["']/);
+            if (!hrefMatch) return match;
+            
+            const href = hrefMatch[1];
+            // Use preload with onload to make it non-blocking
+            return `<link rel="preload" href="${href}" as="style" onload="this.onload=null;this.rel='stylesheet'"><noscript><link rel="stylesheet" href="${href}"></noscript>`;
+          }
+        );
+
+        // Add loadCSS polyfill for browsers that don't support onload on link tags
+        const polyfill = `<script>!function(e){"use strict";var t=function(t,n,r){var o,i=e.document,a=i.createElement("link");if(n)o=n;else{var l=(i.body||i.getElementsByTagName("head")[0]).childNodes;o=l[l.length-1]}var d=i.styleSheets;a.rel="stylesheet",a.href=t,a.media="only x",function e(t){if(i.body)return t();setTimeout(function(){e(t)})}(function(){o.parentNode.insertBefore(a,n?o:o.nextSibling)});var f=function(e){for(var t=a.href,n=d.length;n--;)if(d[n].href===t)return e();setTimeout(function(){f(e)})};return a.addEventListener&&a.addEventListener("load",function(){this.media=r||"all"}),a.onloadcssdefined=f,f(function(){a.media!==r&&(a.media=r||"all")}),a};"undefined"!=typeof exports?exports.loadCSS=t:e.loadCSS=t}("undefined"!=typeof global?global:this);</script>`;
+        
+        // Insert polyfill before closing head
+        html = html.replace("</head>", `    ${polyfill}\n  </head>`);
+
+        return html;
+      },
+    },
+  };
+}
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react(), tsconfigPaths()],
+  plugins: [
+    react(),
+    tsconfigPaths(),
+    cssOptimizationPlugin(),
+  ],
   build: {
     cssCodeSplit: true,
-    cssMinify: true, // Use built-in CSS minification
+    cssMinify: true,
     minify: "esbuild",
     rollupOptions: {
       output: {
