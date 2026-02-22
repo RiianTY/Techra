@@ -5,10 +5,10 @@ export default function AboutPage() {
   return (
     <DefaultLayout>
       <section className="flex flex-col items-center justify-center gap-4 py-10 md:py-10">
-        <h1 className={title()}>About Techra</h1>
+        <h1 className={title()}>About Rivara</h1>
         <div className="inline-block max-w-xl text-left justify-center">
           <p className="mt-4 text-gray-500 dark:text-gray-400 md:text-xl/relaxed">
-            Founded in 2025 out of a passion for building websites, Techra is
+            Founded in 2025 out of a passion for building websites, Rivara is
             dedicated to delivering high-quality web solutions quickly and
             efficiently. Our mission is to provide fast, reliable, and effective
             websites and applications, with a focus on clear communication and
@@ -32,7 +32,7 @@ export default function AboutPage() {
             </li>
           </ul>
           <p className="mt-4 text-gray-500 dark:text-gray-400 md:text-xl/relaxed">
-            At Techra, we value speed, transparency, and communication that
+            At Rivara, we value speed, transparency, and communication that
             makes sense to everyone. Our goal is to make the process simple and
             stress-free, so you can focus on what matters most.
           </p>

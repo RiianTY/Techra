@@ -1,4 +1,4 @@
-# robots.txt for techra.co.uk
+# robots.txt for rivara.co.uk
 
 # Allow all search engines to crawl the site
 User-agent: *
@@ -19,7 +19,7 @@ Allow: /about
 # Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://techra.co.uk/sitemap.xml
+Sitemap: https://rivara.co.uk/sitemap.xml
 
 # Specific rules for major search engines
 User-agent: Googlebot

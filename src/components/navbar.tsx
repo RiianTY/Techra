@@ -154,7 +154,7 @@ export const Navbar = ({ maxWidth = "xl", position = "sticky", className }: Navb
                 disableActiveStyle
               >
                 <Logo />
-                <p className="font-bold text-inherit">Techra</p>
+                <p className="font-bold text-inherit">Rivara</p>
               </Link>
             </NavbarBrand>
             <div className="hidden sm:flex gap-4 justify-start ml-2">

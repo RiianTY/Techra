@@ -19,12 +19,14 @@ const childVariants = {
   visible: { opacity: 1, transition: { duration: 1 } },
 };
 
-{/* format the code and put the text inside a data.js file along with the className (maybe) */}
+{
+  /* format the code and put the text inside a data.js file along with the className (maybe) */
+}
 
 export const Card = React.memo(() => {
   return (
     <motion.section
-      className="w-full flex items-center justify-center py-12 md:py-24 bg-white dark:bg-black test"
+      className="w-full flex items-center justify-center py-6 md:py-12 bg-white dark:bg-black test"
       variants={variants}
       initial="hidden"
       animate="visible"

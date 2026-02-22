@@ -4,9 +4,10 @@ import DefaultLayout from "@/layouts/default";
 import { Link } from "@/components/link";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
+import ASCIIAnimation from "@/components/ascii";
 
 // Lazy load heavy components to reduce initial bundle size
-const WebsitePreview = lazy(() => import("@/components/website-preview"));
+// const WebsitePreview = lazy(() => import("@/components/website-preview"));
 const Cards = lazy(() => import("@/components/cards"));
 
 const variants = {
@@ -23,7 +24,7 @@ const variants = {
 
 const childVariants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, transition: { duration: .1 } },
+  visible: { opacity: 1, transition: { duration: 0.1 } },
 };
 
 const Button = () => {
@@ -68,36 +69,51 @@ export default function IndexPage() {
         variants={variants}
         initial="hidden"
         animate="visible"
-        className="flex flex-col lg:flex-row flex-wrap items-center justify-center gap-20 py-8 md:py-10"
+        className="flex flex-col items-center mt-32"
       >
-        <div
-          key={1}
-          className="inline-block max-w-lg text-center justify-center max-w-md"
-        >
+        <div key={1} className="inline-block max-w-lg text-center max-w-md">
           <h1 className={title()}>
             Welcome to&nbsp;
-            <span className={title({ color: "violet" })}>Techra&nbsp;</span>
+            <span className={title({ color: "cyan" })}>Rivara&nbsp;</span>
             <br />
             Web solutions for everyone
           </h1>
-          
+
           <h2 className={subtitle({ class: "mt-4" })}>
             Modernising your business made easy
             <Button />
           </h2>
         </div>
-        <motion.div key={2} variants={childVariants}>
-          <Suspense fallback={<div className="w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px] h-[400px] bg-default-100 animate-pulse rounded-lg" />}>
-            <WebsitePreview
-              className="shadow-lg w-full max-w-md lg:max-w-none lg:w-[450px] md:w-[500px]"
-              size="responsive"
-              autoSwitchThemes={true}
-            />
-          </Suspense>
-        </motion.div>
+
+        {/* ASCII globe - fixed size container so art doesn't scale when section spacing changes */}
       </motion.header>
+      <motion.div
+        key={2}
+        variants={childVariants}
+        className="w-full flex justify-center shrink-0 h-[25vh] md:h-[35vh] lg:h-[40vh]"
+      >
+        <Suspense
+          fallback={
+            <div className="w-full h-full animate-pulse rounded-lg bg-default-100" />
+          }
+        >
+          <ASCIIAnimation
+            frameFolder="animation/planet"
+            quality="high"
+            frameCount={300}
+            fps={20}
+            lazy={true}
+            className="w-full h-full"
+          />
+        </Suspense>
+      </motion.div>
+
       <motion.div key={4} variants={childVariants}>
-        <Suspense fallback={<div className="w-full py-12 bg-default-50 animate-pulse" />}>
+        <Suspense
+          fallback={
+            <div className="w-full py-12 bg-default-50 animate-pulse" />
+          }
+        >
           <Cards />
         </Suspense>
       </motion.div>

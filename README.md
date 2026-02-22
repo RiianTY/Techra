@@ -1,4 +1,4 @@
-# Company site called Techra
+# Company site called Rivara
 
 This is a current project, that is still under development
 
