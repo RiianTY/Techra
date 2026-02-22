@@ -8,8 +8,8 @@ function cssOptimizationPlugin(): Plugin {
   return {
     name: "css-optimization",
     transformIndexHtml: {
-      enforce: "post",
-      transform(html, ctx) {
+      order: "post",
+      handler(html) {
         // Inline critical CSS (minified) - CSS variables and base styles
         const criticalCSS = `:root{--background:0 0% 100%;--foreground:0 0% 3.9%;--primary:262.1 83.3% 57.8%;--primary-foreground:210 20% 98%;--danger:0 72.2% 50.6%;--danger-foreground:0 0% 98%;--default:0 0% 98%;--default-foreground:0 0% 9%;--default-50:0 0% 98%;--default-100:0 0% 96.1%;--default-200:0 0% 89.8%;--default-300:0 0% 83.1%;--default-400:0 0% 63.9%;--default-500:0 0% 45.1%;--default-600:0 0% 32.2%;--default-700:0 0% 23.1%;--default-800:0 0% 14.9%;--default-900:0 0% 9%;--divider:0 0% 89.8%}.dark{--background:0 0% 0%;--foreground:0 0% 98%;--primary:263.4 70% 50.4%;--primary-foreground:210 20% 98%;--danger:0 62.8% 30.6%;--danger-foreground:0 0% 98%;--default:0 0% 9%;--default-foreground:0 0% 98%;--default-50:0 0% 9%;--default-100:0 0% 14.9%;--default-200:0 0% 23.1%;--default-300:0 0% 32.2%;--default-400:0 0% 45.1%;--default-500:0 0% 63.9%;--default-600:0 0% 83.1%;--default-700:0 0% 89.8%;--default-800:0 0% 96.1%;--default-900:0 0% 98%;--divider:0 0% 14.9%}html{background-color:hsl(var(--background));color:hsl(var(--foreground))}body{background-color:hsl(var(--background));color:hsl(var(--foreground));margin:0;padding:0;min-height:100vh}#root{background-color:hsl(var(--background));min-height:100vh}`;
 
@@ -74,35 +74,19 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: (id) => {
-          // Split vendor chunks more granularly to reduce initial bundle size
-          if (id.includes("node_modules")) {
-            // CRITICAL: Keep React and React-DOM in main bundle
-            // They must be available immediately for all components, including lazy-loaded ones
-            // Don't split React - it needs to be in the entry bundle
-            // Check for React in a way that catches all React imports
-            if (
-              id.includes("react") && 
-              !id.includes("react-router") &&
-              !id.includes("react-aria") &&
-              !id.includes("react-types")
-            ) {
-              return; // Keep React in main bundle - return undefined to prevent splitting
-            }
-            // React Router can be split (smaller, not needed immediately)
-            if (id.includes("react-router")) {
-              return "vendor-router";
-            }
-            // Framer Motion (large library, lazy load it)
-            if (id.includes("framer-motion")) {
-              return "vendor-motion";
-            }
-            // Other heavy libraries
-            if (id.includes("lucide-react")) {
-              return "vendor-icons";
-            }
-            // Everything else
-            return "vendor";
+          if (!id.includes("node_modules")) return;
+          // Keep React (and react-dom) in main bundle for immediate availability
+          if (
+            id.includes("react") &&
+            !id.includes("react-aria") &&
+            !id.includes("react-types")
+          ) {
+            return; // main bundle
           }
+          if (id.includes("framer-motion")) return "vendor-motion";
+          if (id.includes("lucide-react")) return "vendor-icons";
+          // All other node_modules (including react-router) in one chunk to avoid circular refs
+          return "vendor";
         },
         // Optimize chunk file names
         chunkFileNames: "assets/[name]-[hash].js",
