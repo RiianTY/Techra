@@ -126,7 +126,7 @@ export default function ASCIIAnimation({
   frameCount = 60,
   frameFolder = "frames",
   textSize = "text-xs",
-  showFrameCounter = false,
+  _showFrameCounter = false,
   ariaLabel,
   quality = "medium",
   lazy = true,
