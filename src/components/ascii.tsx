@@ -111,7 +111,7 @@ interface ASCIIAnimationProps {
   frameCount?: number;
   frameFolder?: string;
   textSize?: string;
-  showFrameCounter?: boolean;
+  _showFrameCounter?: boolean;
   quality?: Quality;
   ariaLabel?: string;
   lazy?: boolean;
