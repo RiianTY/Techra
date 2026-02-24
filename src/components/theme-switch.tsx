@@ -35,21 +35,23 @@ export const ThemeSwitch: FC<ThemeSwitchProps> = ({
 
   return (
     <button
-      type="button"
       aria-label={isSelected ? "Switch to dark mode" : "Switch to light mode"}
-      onClick={handleToggle}
       className={clsx(
         "px-px transition-opacity hover:opacity-80 cursor-pointer",
         className,
         classNames?.base,
       )}
+      type="button"
+      onClick={handleToggle}
     >
       <VisuallyHidden>
         <input
-          type="checkbox"
+          aria-label={
+            isSelected ? "Switch to dark mode" : "Switch to light mode"
+          }
           checked={isSelected}
+          type="checkbox"
           onChange={handleToggle}
-          aria-label={isSelected ? "Switch to dark mode" : "Switch to light mode"}
         />
       </VisuallyHidden>
       <div

@@ -65,6 +65,7 @@ class RootErrorBoundary extends Component<
         </div>
       );
     }
+
     return this.props.children;
   }
 }
@@ -90,6 +91,7 @@ const RootComponent = () => {
 };
 
 const root = document.getElementById("root");
+
 if (root) {
   ReactDOM.createRoot(root).render(
     <RootErrorBoundary>

@@ -37,6 +37,7 @@ class AnimationManager {
   private update = (time: number) => {
     const { lastFrame } = this;
     let delta = time - lastFrame;
+
     if (this.lastFrame === -1) {
       this.lastFrame = time;
     } else {
@@ -74,12 +75,14 @@ async function resolveFrameSource(
     try {
       const probeUrl = `/${frameFolder}/${candidate}/${firstFrameFile}`;
       const probeResponse = await fetch(probeUrl);
+
       if (probeResponse.ok) {
         if (candidate !== quality) {
           console.warn(
             `ASCIIAnimation: quality "${quality}" not found in "${frameFolder}", falling back to "${candidate}"`,
           );
         }
+
         return { baseUrl: `/${frameFolder}/${candidate}`, isFlat: false };
       }
     } catch {
@@ -90,10 +93,12 @@ async function resolveFrameSource(
   // Try flat folder structure (legacy)
   try {
     const legacyProbe = await fetch(`/${frameFolder}/${firstFrameFile}`);
+
     if (legacyProbe.ok) {
       console.warn(
         `ASCIIAnimation: no quality subfolders found in "${frameFolder}", using flat folder structure`,
       );
+
       return { baseUrl: `/${frameFolder}`, isFlat: true };
     }
   } catch {
@@ -160,8 +165,10 @@ export default function ASCIIAnimation({
     () =>
       new AnimationManager(() => {
         const f = framesRef.current;
+
         if (f.length === 0) return;
         const nextFrame = (currentFrameRef.current + 1) % f.length;
+
         currentFrameRef.current = nextFrame;
 
         // Direct DOM write — no React re-render
@@ -190,18 +197,22 @@ export default function ASCIIAnimation({
     fullLoadTriggered.current = true;
 
     const source = resolvedSource.current;
+
     if (!source) return;
 
     try {
       const framePromises = frameFiles.map(async (filename) => {
         const response = await fetch(`${source.baseUrl}/${filename}`);
+
         if (!response.ok) {
           throw new Error(`Failed to fetch ${filename}: ${response.status}`);
         }
+
         return await response.text();
       });
 
       const loadedFrames = await Promise.all(framePromises);
+
       setFrames(loadedFrames);
       currentFrameRef.current = 0;
     } catch (error) {
@@ -221,6 +232,7 @@ export default function ASCIIAnimation({
         setFrames(providedFrames);
         setIsLoading(false);
         fullLoadTriggered.current = true;
+
         return;
       }
 
@@ -229,11 +241,13 @@ export default function ASCIIAnimation({
         quality,
         frameFiles[0],
       );
+
       if (!source) {
         console.error(
           `ASCIIAnimation: could not find frames in any quality folder or flat structure for "${frameFolder}"`,
         );
         setIsLoading(false);
+
         return;
       }
 
@@ -242,8 +256,10 @@ export default function ASCIIAnimation({
       // Fetch only the first frame as a preview
       try {
         const response = await fetch(`${source.baseUrl}/${frameFiles[0]}`);
+
         if (!response.ok) throw new Error(`Failed to fetch preview frame`);
         const firstFrame = await response.text();
+
         setFrames([firstFrame]);
         currentFrameRef.current = 0;
       } catch (error) {
@@ -312,6 +328,7 @@ export default function ASCIIAnimation({
     const updateScale = () => {
       const container = containerRef.current;
       const content = preRef.current;
+
       if (!container || !content) return;
 
       const availableWidth = container.clientWidth;
@@ -335,6 +352,7 @@ export default function ASCIIAnimation({
     updateScale();
 
     const resizeObserver = new ResizeObserver(updateScale);
+
     resizeObserver.observe(containerRef.current);
 
     return () => {
@@ -347,9 +365,9 @@ export default function ASCIIAnimation({
       <div className={` ${className}`}>
         <svg
           className="animate-spin h-8 w-8 text-muted-foreground"
-          xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg"
         >
           <circle
             className="opacity-25"
@@ -358,12 +376,12 @@ export default function ASCIIAnimation({
             r="10"
             stroke="currentColor"
             strokeWidth="4"
-          ></circle>
+          />
           <path
             className="opacity-75"
-            fill="currentColor"
             d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-          ></path>
+            fill="currentColor"
+          />
         </svg>
       </div>
     );

@@ -1,4 +1,8 @@
-import { Link as RouterLink, LinkProps as RouterLinkProps, useLocation } from "react-router-dom";
+import {
+  Link as RouterLink,
+  LinkProps as RouterLinkProps,
+  useLocation,
+} from "react-router-dom";
 import { tv } from "tailwind-variants";
 import clsx from "clsx";
 
@@ -28,7 +32,14 @@ export interface LinkProps extends Omit<RouterLinkProps, "color"> {
   disableActiveStyle?: boolean;
 }
 
-export const Link = ({ className, color, size, to, disableActiveStyle = false, ...props }: LinkProps) => {
+export const Link = ({
+  className,
+  color,
+  size,
+  to,
+  disableActiveStyle = false,
+  ...props
+}: LinkProps) => {
   const location = useLocation();
   const isActive = location.pathname === to && !disableActiveStyle;
 
@@ -37,7 +48,7 @@ export const Link = ({ className, color, size, to, disableActiveStyle = false, .
       className={clsx(
         link({ color, size }),
         isActive && "text-primary font-medium",
-        className
+        className,
       )}
       data-active={isActive}
       to={to}

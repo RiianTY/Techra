@@ -1,6 +1,7 @@
 import { useState } from "react";
-import { Link } from "@/components/link";
 import clsx from "clsx";
+
+import { Link } from "@/components/link";
 import { siteConfig } from "@/config/site";
 import { ThemeSwitch } from "@/components/theme-switch";
 import { Logo } from "@/components/icons";
@@ -36,7 +37,11 @@ interface NavbarMenuItemProps {
   children: React.ReactNode;
 }
 
-const NavbarContent = ({ className, justify = "start", children }: NavbarContentProps) => {
+const NavbarContent = ({
+  className,
+  justify = "start",
+  children,
+}: NavbarContentProps) => {
   const justifyClass = {
     start: "justify-start",
     center: "justify-center",
@@ -66,9 +71,9 @@ interface NavbarMenuToggleProps {
 const NavbarMenuToggle = ({ isOpen, onToggle }: NavbarMenuToggleProps) => {
   return (
     <button
-      type="button"
-      className="sm:hidden p-2 rounded-lg hover:bg-default-100 transition-colors"
       aria-label="Toggle menu"
+      className="sm:hidden p-2 rounded-lg hover:bg-default-100 transition-colors"
+      type="button"
       onClick={onToggle}
     >
       {isOpen ? (
@@ -80,10 +85,10 @@ const NavbarMenuToggle = ({ isOpen, onToggle }: NavbarMenuToggleProps) => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
+            d="M6 18L18 6M6 6l12 12"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M6 18L18 6M6 6l12 12"
           />
         </svg>
       ) : (
@@ -95,10 +100,10 @@ const NavbarMenuToggle = ({ isOpen, onToggle }: NavbarMenuToggleProps) => {
           xmlns="http://www.w3.org/2000/svg"
         >
           <path
+            d="M4 6h16M4 12h16M4 18h16"
             strokeLinecap="round"
             strokeLinejoin="round"
             strokeWidth={2}
-            d="M4 6h16M4 12h16M4 18h16"
           />
         </svg>
       )}
@@ -108,7 +113,7 @@ const NavbarMenuToggle = ({ isOpen, onToggle }: NavbarMenuToggleProps) => {
 
 const NavbarMenu = ({ isOpen, children }: NavbarMenuProps) => {
   if (!isOpen) return null;
-  
+
   return (
     <div className="sm:hidden absolute top-full left-0 right-0 bg-background border-b border-divider shadow-lg z-50">
       {children}
@@ -120,9 +125,13 @@ const NavbarMenuItem = ({ children }: NavbarMenuItemProps) => {
   return <div className="py-2">{children}</div>;
 };
 
-export const Navbar = ({ maxWidth = "xl", position = "sticky", className }: NavbarProps) => {
+export const Navbar = ({
+  maxWidth = "xl",
+  position = "sticky",
+  className,
+}: NavbarProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const maxWidthClass = {
     xl: "max-w-7xl",
     "2xl": "max-w-screen-2xl",
@@ -140,18 +149,20 @@ export const Navbar = ({ maxWidth = "xl", position = "sticky", className }: Navb
       className={clsx(
         "w-full flex flex-col bg-background border-b border-divider",
         positionClass,
-        className
+        className,
       )}
     >
-      <div className={clsx("w-full mx-auto px-4 sm:px-6 lg:px-8", maxWidthClass)}>
+      <div
+        className={clsx("w-full mx-auto px-4 sm:px-6 lg:px-8", maxWidthClass)}
+      >
         <div className="flex items-center justify-between h-16">
           <NavbarContent className="basis-1/5 sm:basis-full" justify="start">
             <NavbarBrand className="gap-3 max-w-fit">
               <Link
+                disableActiveStyle
                 className="flex justify-start items-center gap-1"
                 color="foreground"
                 to="/"
-                disableActiveStyle
               >
                 <Logo />
                 <p className="font-bold text-inherit">Rivara</p>
@@ -163,7 +174,7 @@ export const Navbar = ({ maxWidth = "xl", position = "sticky", className }: Navb
                   <Link
                     className={clsx(
                       "text-foreground hover:text-[#00b7fa] transition-colors",
-                      "data-[active=true]:text-[#00b7fa] data-[active=true]:font-medium"
+                      "data-[active=true]:text-[#00b7fa] data-[active=true]:font-medium",
                     )}
                     color="foreground"
                     to={item.href}
@@ -186,7 +197,10 @@ export const Navbar = ({ maxWidth = "xl", position = "sticky", className }: Navb
 
           <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">
             <ThemeSwitch />
-            <NavbarMenuToggle isOpen={isMenuOpen} onToggle={() => setIsMenuOpen(!isMenuOpen)} />
+            <NavbarMenuToggle
+              isOpen={isMenuOpen}
+              onToggle={() => setIsMenuOpen(!isMenuOpen)}
+            />
           </NavbarContent>
         </div>
       </div>
@@ -204,8 +218,8 @@ export const Navbar = ({ maxWidth = "xl", position = "sticky", className }: Navb
                       ? "danger"
                       : "foreground"
                 }
-                to={item.href}
                 size="lg"
+                to={item.href}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}

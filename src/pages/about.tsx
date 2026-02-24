@@ -42,7 +42,7 @@ export default function AboutPage() {
           </p>
           <p className="mt-6 text-lg font-semibold text-black dark:text-white">
             Ready to get started?{" "}
-            <a href="/contact" className="underline">
+            <a className="underline" href="/contact">
               Contact us today
             </a>{" "}
             and let’s build something great together.
