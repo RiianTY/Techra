@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { title } from "@/components/primitives";
+import { Link } from "@/components/link";
 import React from "react";
 
 const variants = {
@@ -28,6 +29,7 @@ export const Pricing = React.memo(() => {
       animate="visible"
     >
       <div className="container px-0.5 md:px-6">
+        {/* Pricing */}
         <motion.div
           key={0}
           variants={childVariants}
@@ -35,7 +37,7 @@ export const Pricing = React.memo(() => {
         >
           <div className="space-y-2">
             <h3 className="flex w-fit m-auto mb-[15px] rounded-lg bg-gray-100 dark:bg-neutral-900 px-3 py-1 text-sm dark:text-gray-200">
-              Our Services
+              Our Pricing
             </h3>
             <h4 className={title()}>What We Offer</h4>
             <p className="max-w-[900px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
@@ -44,119 +46,120 @@ export const Pricing = React.memo(() => {
             </p>
           </div>
         </motion.div>
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 mt-12">
-          {/* Web Development Card */}
-          <motion.div
-            key={1}
-            variants={childVariants}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900 dark:to-blue-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            <div className="relative z-10">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300 transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6"
-                >
-                  <circle cx="12" cy="12" r="10" />
-                  <line x1="2" x2="22" y1="12" y2="12" />
-                  <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
-                </svg>
+        <div className="mx-auto max-w-6xl mt-12 overflow-visible">
+          {/* Mobile: stacked; Desktop: center card on top, side cards peek from behind */}
+          <div className="flex flex-col md:flex-row justify-center items-end gap-6 md:gap-4 lg:gap-6">
+            {/* Left — behind center on desktop */}
+            <motion.div
+              key={1}
+              variants={childVariants}
+              className="group relative w-full md:min-w-[260px] md:max-w-[300px] md:h-[420px] md:-mr-6 lg:-mr-8 md:z-10 md:scale-90 md:origin-bottom-right overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 border border-gray-200 dark:border-neutral-800 flex flex-col min-h-[420px] order-2 md:order-1"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-950/30 dark:to-blue-900/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative z-10 flex flex-col flex-1">
+                <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-blue-100 text-blue-600 dark:bg-blue-900 dark:text-blue-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="12" y1="1" x2="12" y2="23" />
+                    <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                  </svg>
+                </div>
+                <h3 className="mb-1 text-xl font-bold dark:text-white">Upfront — no hosting</h3>
+                <p className="text-sm text-blue-600 dark:text-blue-400 font-medium mb-3">Pay once, you handle hosting</p>
+                <div className="mb-4">
+                  <span className="text-gray-500 dark:text-gray-400 text-sm">From </span>
+                  <span className="text-3xl font-bold tabular-nums dark:text-white">£1,000</span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">one-time · design & build only</p>
+                </div>
+                <ul className="text-gray-500 dark:text-gray-400 text-sm space-y-2 flex-1">
+                  <li>• One-time payment for your project</li>
+                  <li>• No recurring fees · full ownership</li>
+                  <li>• You arrange hosting & domain</li>
+                  <li>• Best for fixed budgets</li>
+                </ul>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
-                One time payment
-              </h3>
-              <ol className="text-gray-500 dark:text-gray-400">
-                <li>Custom websites built with cutting-edge technologies that
-                deliver exceptional user experiences.</li>
-                <li>Custom websites built with cutting-edge technologies that
-                deliver exceptional user experiences.</li>
-                <li>Custom websites built with cutting-edge technologies that</li>
-                <li>Custom websites built with cutting-edge technologies that</li>
-                <li>Custom websites built with cutting-edge technologies that</li>
-              </ol>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* UI/UX Design Card */}
-          <motion.div
-            key={2}
-            variants={childVariants}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900 dark:to-purple-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            <div className="relative z-10">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-purple-100 text-purple-600 dark:bg-purple-900 dark:text-purple-300 transition-all duration-300 group-hover:bg-purple-600 group-hover:text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6"
-                >
-                  <rect width="20" height="14" x="2" y="3" rx="2" />
-                  <line x1="8" x2="16" y1="21" y2="21" />
-                  <line x1="12" x2="12" y1="17" y2="21" />
-                </svg>
+            {/* Center — main card, on top */}
+            <motion.div
+              key={3}
+              variants={childVariants}
+              className="relative flex flex-col w-full md:w-[340px] lg:w-[380px] flex-shrink-0 order-1 md:order-2 z-20 md:scale-90 md:origin-top-center"
+            >
+              <div className="absolute -inset-[1px] rounded-[calc(0.75rem+2px)] bg-gradient-to-r from-[#00b7fa] to-[#01cfea] opacity-70 blur-sm pricing-glow-aura" aria-hidden />
+              <div className="absolute -inset-[1px] rounded-[calc(0.75rem+2px)] bg-gradient-to-r from-[#00b7fa] to-[#01cfea] opacity-35 blur-xl pricing-glow-aura" aria-hidden />
+              <div className="relative rounded-xl bg-white dark:bg-neutral-900 p-8 md:p-10 shadow-2xl border-2 border-[#00b7fa]/50 dark:border-[#01cfea]/50 flex flex-col flex-1 ring-2 ring-[#00b7fa]/30 dark:ring-[#01cfea]/30 ring-offset-2 dark:ring-offset-neutral-900 min-h-[340px]">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+                  <span className="rounded-full bg-gradient-to-r from-[#00b7fa] to-[#01cfea] px-3 py-1.5 text-xs font-semibold text-white shadow-lg">Best value</span>
+                </div>
+                <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-xl bg-cyan-100 text-[#00b7fa] dark:bg-cyan-900/50 dark:text-[#01cfea]">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                    <path d="M2 17l10 5 10-5" />
+                  </svg>
+                </div>
+                <h3 className="mb-1 text-2xl font-bold dark:text-white">Everything included</h3>
+                <p className="text-sm text-[#00b7fa] dark:text-[#01cfea] font-medium mb-4">Build, host, maintain & edits</p>
+                <div className="mb-5">
+                  <p className="text-sm text-gray-500 dark:text-gray-400 mb-1">all-in-one subscription</p>
+                  <p className="flex flex-wrap items-baseline gap-x-2 gap-y-1">
+                    <span className="text-gray-500 dark:text-gray-400 text-base">from</span>
+                    <span className="text-4xl font-bold tabular-nums dark:text-white">£199</span>
+                    <span className="text-gray-500 dark:text-gray-400 text-base">/mo</span>
+                    <span className="text-gray-400 dark:text-gray-500">+</span>
+                    <span className="text-base font-semibold tabular-nums text-gray-500 dark:text-gray-400">£999 upfront</span>
+                  </p>
+                </div>
+                <ul className="text-gray-500 dark:text-gray-400 text-sm md:text-base space-y-2.5 flex-1">
+                  <li>• Custom design & development</li>
+                  <li>• Hosting, backups & security updates</li>
+                  <li>• Content edits & changes included</li>
+                  <li>• SSL, support & hassle-free launch</li>
+                </ul>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
-                UI/UX Design
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Beautiful, intuitive interfaces that engage users and enhance
-                brand perception.
-              </p>
-            </div>
-          </motion.div>
+            </motion.div>
 
-          {/* App Development Card */}
-          <motion.div
-            key={3}
-            variants={childVariants}
-            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-green-50 to-green-100 dark:from-green-900 dark:to-green-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-            <div className="relative z-10">
-              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-green-100 text-green-600 dark:bg-green-900 dark:text-green-300 transition-all duration-300 group-hover:bg-green-600 group-hover:text-white">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  className="h-6 w-6"
-                >
-                  <polyline points="16 18 22 12 16 6" />
-                  <polyline points="8 6 2 12 8 18" />
-                </svg>
+            {/* Right — behind center on desktop */}
+            <motion.div
+              key={2}
+              variants={childVariants}
+              className="group relative w-full md:min-w-[260px] md:max-w-[300px] md:h-[420px] md:-ml-6 lg:-ml-8 md:z-10 md:scale-90 md:origin-bottom-left overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30 border border-gray-200 dark:border-neutral-800 flex flex-col min-h-[420px] order-3"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-violet-50 to-violet-100 dark:from-violet-950/30 dark:to-violet-900/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+              <div className="relative z-10 flex flex-col flex-1">
+                <div className="mb-4 flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-violet-100 text-violet-600 dark:bg-violet-900 dark:text-violet-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <rect width="18" height="18" x="3" y="3" rx="2" />
+                    <path d="M3 9h18" />
+                    <path d="M9 21V9" />
+                  </svg>
+                </div>
+                <h3 className="mb-1 text-xl font-bold dark:text-white">Upfront — with hosting</h3>
+                <p className="text-sm text-violet-600 dark:text-violet-400 font-medium mb-3">Build + 12 months hosted</p>
+                <div className="mb-4">
+                  <span className="text-gray-500 dark:text-gray-400 text-sm">From </span>
+                  <span className="text-3xl font-bold tabular-nums dark:text-white">£3,500</span>
+                  <p className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">one-time · includes 12 months hosting & support</p>
+                </div>
+                <ul className="text-gray-500 dark:text-gray-400 text-sm space-y-2 flex-1">
+                  <li>• Design, build & launch</li>
+                  <li>• 12 months hosting & SSL included</li>
+                  <li>• Backups, updates & support for year one</li>
+                  <li>• Then renew or move hosting</li>
+                </ul>
               </div>
-              <h3 className="mb-2 text-xl font-bold dark:text-white">
-                Web App Development
-              </h3>
-              <p className="text-gray-500 dark:text-gray-400">
-                Cross-platform mobile applications that provide seamless
-                experiences across all devices.
-              </p>
-            </div>
-          </motion.div>         
+            </motion.div>
+          </div>
         </div>
+        <motion.p
+          variants={childVariants}
+          className="mt-10 text-center text-sm text-gray-500 dark:text-gray-400 max-w-xl mx-auto"
+        >
+          Every project is quoted to fit your scope —{" "}
+          <Link to="/contact" className="text-[#00b7fa] dark:text-[#01cfea] font-medium hover:underline">
+            get in touch for a tailored quote
+          </Link>
+          .
+        </motion.p>
       </div>
     </motion.section>
   );

@@ -186,6 +186,15 @@ form > .required:after {
 
 /* home page styles start */
 
+@keyframes pricing-glow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.85; }
+}
+
+.pricing-glow-aura {
+  animation: pricing-glow 3s ease-in-out infinite;
+}
+
 /* home page styles end */
 
 .toaster {

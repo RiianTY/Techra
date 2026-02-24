@@ -162,8 +162,8 @@ export const Navbar = ({ maxWidth = "xl", position = "sticky", className }: Navb
                 <NavbarItem key={item.href}>
                   <Link
                     className={clsx(
-                      "text-foreground hover:text-primary transition-colors",
-                      "data-[active=true]:text-primary data-[active=true]:font-medium"
+                      "text-foreground hover:text-[#00b7fa] transition-colors",
+                      "data-[active=true]:text-[#00b7fa] data-[active=true]:font-medium"
                     )}
                     color="foreground"
                     to={item.href}
@@ -196,9 +196,10 @@ export const Navbar = ({ maxWidth = "xl", position = "sticky", className }: Navb
           {siteConfig.navMenuItems.map((item, index) => (
             <NavbarMenuItem key={`${item.href}-${index}`}>
               <Link
+                className={index === 2 ? "!text-[#00b7fa]" : undefined}
                 color={
                   index === 2
-                    ? "primary"
+                    ? "foreground"
                     : index === siteConfig.navMenuItems.length - 1
                       ? "danger"
                       : "foreground"

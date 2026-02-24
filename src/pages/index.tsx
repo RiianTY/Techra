@@ -5,6 +5,7 @@ import { Link } from "@/components/link";
 import { siteConfig } from "@/config/site";
 import { motion } from "framer-motion";
 import ASCIIAnimation from "@/components/ascii";
+import Pricing from "@/components/pricing";
 
 // Lazy load heavy components to reduce initial bundle size
 // const WebsitePreview = lazy(() => import("@/components/website-preview"));
@@ -115,6 +116,7 @@ export default function IndexPage() {
           }
         >
           <Cards />
+          <Pricing />
         </Suspense>
       </motion.div>
     </DefaultLayout>

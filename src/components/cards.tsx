@@ -43,8 +43,8 @@ export const Card = React.memo(() => {
             </h3>
             <h4 className={title()}>What We Offer</h4>
             <p className="max-w-[900px] text-gray-500 dark:text-gray-400 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-              We provide end-to-end web development solutions tailored to your
-              business needs.
+              From strategy and design to build, launch, and ongoing support – we
+              deliver solutions that align with your goals and scale with your business.
             </p>
           </div>
         </motion.div>
@@ -76,11 +76,11 @@ export const Card = React.memo(() => {
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">
-                Web Development
+                Website Development
               </h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Custom websites built with cutting-edge technologies that
-                deliver exceptional user experiences.
+                Custom, responsive websites built with modern frameworks and
+                standards-based code – fast, maintainable, and ready for growth.
               </p>
             </div>
           </motion.div>
@@ -115,8 +115,8 @@ export const Card = React.memo(() => {
                 UI/UX Design
               </h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Beautiful, intuitive interfaces that engage users and enhance
-                brand perception.
+                User research, wireframes, and high-fidelity design that put
+                your audience first and support conversion and brand goals.
               </p>
             </div>
           </motion.div>
@@ -147,11 +147,11 @@ export const Card = React.memo(() => {
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">
-                Web App Development
+                Web & App Development
               </h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Cross-platform mobile applications that provide seamless
-                experiences across all devices.
+                Custom web applications, dashboards, and tools – from SPAs and
+                internal systems to customer-facing apps that work across devices.
               </p>
             </div>
           </motion.div>
@@ -182,11 +182,11 @@ export const Card = React.memo(() => {
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">
-                SEO Optimization
+                SEO & Discovery
               </h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Strategic optimization to improve visibility and drive organic
-                traffic to your website.
+                Technical and on-page SEO so your site is built for search from
+                the ground up – better rankings, more organic traffic, and clear metrics.
               </p>
             </div>
           </motion.div>
@@ -219,11 +219,11 @@ export const Card = React.memo(() => {
                 </svg>
               </div>
               <h3 className="mb-2 text-xl font-bold dark:text-white">
-                E-commerce Solutions
+                E-commerce & Online Stores
               </h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Robust online stores with secure payment gateways and intuitive
-                shopping experiences.
+                From Shopify and WooCommerce to custom builds – secure checkout,
+                inventory and orders, and a shopping experience that converts.
               </p>
             </div>
           </motion.div>
@@ -256,8 +256,113 @@ export const Card = React.memo(() => {
                 Maintenance & Support
               </h3>
               <p className="text-gray-500 dark:text-gray-400">
-                Ongoing technical support and regular updates to keep your
-                digital assets running smoothly.
+                Proactive updates, security patches, backups, and content changes –
+                so your site stays secure, fast, and aligned with your business.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Hosting & DevOps Card */}
+          <motion.div
+            key={7}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-indigo-50 to-indigo-100 dark:from-indigo-900 dark:to-indigo-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div className="relative z-10">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-indigo-100 text-indigo-600 dark:bg-indigo-900 dark:text-indigo-300 transition-all duration-300 group-hover:bg-indigo-600 group-hover:text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-6 w-6"
+                >
+                  <rect width="18" height="18" x="3" y="3" rx="2" />
+                  <path d="M3 9h18" />
+                  <path d="M9 21V9" />
+                </svg>
+              </div>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">
+                Hosting & DevOps
+              </h3>
+              <p className="text-gray-500 dark:text-gray-400">
+                Managed hosting, CI/CD pipelines, and cloud infrastructure –
+                reliable uptime, scalable capacity, and deployments you can trust.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* Performance & Accessibility Card */}
+          <motion.div
+            key={8}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-teal-50 to-teal-100 dark:from-teal-900 dark:to-teal-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div className="relative z-10">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-teal-100 text-teal-600 dark:bg-teal-900 dark:text-teal-300 transition-all duration-300 group-hover:bg-teal-600 group-hover:text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-6 w-6"
+                >
+                  <path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z" />
+                </svg>
+              </div>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">
+                Performance & Accessibility
+              </h3>
+              <p className="text-gray-500 dark:text-gray-400">
+                Core Web Vitals, page speed, and WCAG-compliant, inclusive design –
+                better UX for all users and a stronger signal for search.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* API & Integrations Card */}
+          <motion.div
+            key={9}
+            variants={childVariants}
+            className="group relative overflow-hidden rounded-xl bg-white dark:bg-neutral-900 p-6 shadow-lg dark:shadow-black/30"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-orange-50 to-orange-100 dark:from-orange-900 dark:to-orange-800 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
+            <div className="relative z-10">
+              <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-orange-100 text-orange-600 dark:bg-orange-900 dark:text-orange-300 transition-all duration-300 group-hover:bg-orange-600 group-hover:text-white">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  className="h-6 w-6"
+                >
+                  <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                  <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                </svg>
+              </div>
+              <h3 className="mb-2 text-xl font-bold dark:text-white">
+                API & Integrations
+              </h3>
+              <p className="text-gray-500 dark:text-gray-400">
+                Connect to CRMs, payment gateways, booking systems, and APIs –
+                so your website fits into your existing tools and workflows.
               </p>
             </div>
           </motion.div>
